@@ -12,23 +12,28 @@
 
  function generatePassword() {
    console.log("button works");
-
-
+   let password ="";
+   for(let i = 0 ; i < lengthOfPassword; i++) {
+     let passswordindex = Math.floor(Math.random() * userChoice.length);
+     password = password + userChoice[passswordindex];
+   }
    return "generated passwork will go here";
  }
 
 // // Write password to the #password input
  function writePassword() {
-   let validPrompts = prompts ();
-   let password = generatePassword();
-   let passwordText = document.querySelecto("#password");
+   let validPrompt = prompts();
 
-   passwordText.value = password;
+    if(validPrompt) {
+      let truePassword = generatePassword();
+      let passwordText = document.querySelecto("#password");
+      passwordText.value = truePassword;
+    }
 
  }
 function prompts(){
   userChoice = []
-  promptLength = parseInt(prompt("How long would you like your password to be? (8 - 128)"));
+  lengthOfPassword = parseInt(prompt("How long would you like your password to be? (8 - 128)"));
 
    if(isNaN(lengthOfPassword) || lengthOfPassword < 8 || lengthOfPassword > 128) {
      alert("the length has to be a number between 8 and 128");
