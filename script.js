@@ -1,38 +1,36 @@
 // // Assignment Code
  let lengthOfPassword = 8;
- let lettersLower = ['abcdefghijklmnopqrstuvwxyz'];
- let lettersUpper = ['ABCDEFGHIJKLMNOPQRSTUVWXYZ'];
- let theNumbers = ['0123456789']; 
- let specialChar =['!#$%&()*-./;:<=>?@][^_`{|}~"'];
+ let lettersLower = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',];
+ let lettersUpper = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',];
+ let theNumbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',]; 
+ let specialChar =['!', '#', '$', '%', '&', '(', ')', '*', '-', '.', '/', ';', ':', '<', '=', '>', '@', ']', '[', '^', '_', '`', '{', '|', '}', '~', '"',];
  let userChoice = [];
-
  let generateBtn = document.querySelector("#generate");
- //Add event listener to generate button 
  generateBtn.addEventListener("click", writePassword);
 
  function generatePassword() {
-   console.log("button works");
-   let password ="";
-   for(let i = 0 ; i < lengthOfPassword; i++) {
-     let passswordindex = Math.floor(Math.random() * userChoice.length);
-     password = password + userChoice[passswordindex];
-   }
-   return "generated passwork will go here";
- }
+  let password = "";
+  for (let i = 0 ; i < lengthOfPassword; i++) {
+    let passswordindex = Math.floor(Math.random() * userChoice.length);
+    password = password + userChoice[passswordindex];
+  }
+  console.log(password)
+  return password;
+}
 
-// // Write password to the #password input
  function writePassword() {
-   let validPrompt = prompts();
+  let validPrompt = prompts();
+  let passwordInput = document.querySelector("#password");
 
-    if(validPrompt) {
-      let truePassword = generatePassword();
-      let passwordText = document.querySelecto("#password");
-      passwordText.value = truePassword;
-    }
-
- }
-function prompts(){
-  userChoice = []
+   if(validPrompt) {
+     let userPassword = generatePassword();
+     passwordInput.value = userPassword;
+   } else {
+    passwordInput.value = "please try again.";
+   }
+}
+ 
+function prompts() {
   lengthOfPassword = parseInt(prompt("How long would you like your password to be? (8 - 128)"));
 
    if(isNaN(lengthOfPassword) || lengthOfPassword < 8 || lengthOfPassword > 128) {
@@ -53,13 +51,3 @@ function prompts(){
   }
   return true;
 }
-
-// function writePassword() {
-//     let password = generatePassword();
-//     let passwordText = document.querySelector("#password");
-//     prompts.promptLength; 
-//     return; 
-  
-//     passwordText.value = password;
-
-//   
