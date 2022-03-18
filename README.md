@@ -10,3 +10,4 @@ I was able to do this using this line of code below;
     let passswordindex = Math.floor(Math.random() * userChoice.length);
      password = password + userChoice[passswordindex];
 
+![alt text](./Develop/03-javascript-homework-demo.png)
